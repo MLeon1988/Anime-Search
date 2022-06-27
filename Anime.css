@@ -1,0 +1,50 @@
+.anime-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  justify-content: stretch;
+}
+
+.anime-row>* {
+  flex-basis: 20rem;
+  flex-shrink: 0;
+}
+
+.anime-row .card {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.anime-row .card>.card-content {
+  flex-grow: 1;
+}
+
+.anime-row .card>.card-image {
+  flex-basis: 25rem;
+  flex-shrink: 0;
+  overflow-y: hidden;
+  background-color: grey;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 700px) {
+  .anime-row {
+    flex-basis: auto;
+    flex-direction: column;
+  }
+
+  .anime-row .card>.card-image {
+    flex-basis: auto;
+
+  }
+
+  body {
+    background: red;
+  }
+}
