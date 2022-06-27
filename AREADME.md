@@ -10,7 +10,7 @@ Intent is to be able to search for a random Anime title and get back information
 
 ## API and Data Sample
 
-const url = 'https://api.jikan.moe/v3/anime'
+const url = 'https://api.jikan.moe/v4/anime'
 
 
 fetch(url)
