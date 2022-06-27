@@ -51,7 +51,7 @@ This schedule will be used to keep track of your progress throughout the week an
 |---|---| ---|
 |June 23| Project Approval / Pseudocode / actual code | 
 |June 25| Core Application Structure (HTML, CSS, etc.)  MVP | 
-|June 26-27| Post-MVP| 
+|June 26-27| Run and test code for errors| 
 |June 28| Presentations |
 
 ## Code Snippet
