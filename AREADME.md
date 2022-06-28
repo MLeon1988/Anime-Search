@@ -6,7 +6,7 @@ The Anime Search Box
 
 ## Project Description
 
-Intent is to be able to search for a random Anime title and get back information and an image for the particular Animw.
+Intent is to be able to search for a random Anime title and get back information and an image for the particular Anime.
 
 ## API and Data Sample
 
@@ -39,7 +39,7 @@ The functionality will then be divided into two separate lists: MPV and PostMVP.
 #### PostMVP  
 *These are examples only. Replace with your own Post-MVP features.*
 
-- Add links for trailer
+- Add links for additional information and entertainment
 - Use local storage to save user favorites anime
 _ update data storage with the newest anime titles
 
@@ -51,15 +51,26 @@ This schedule will be used to keep track of your progress throughout the week an
 |---|---| ---|
 |June 23| Project Approval / Pseudocode / actual code | 
 |June 25| Core Application Structure (HTML, CSS, etc.)  MVP | 
-|June 26-27| Post-MVP| 
+|June 26-27| Post MVP / Run and test code for errors| 
 |June 28| Presentations |
 
 ## Code Snippet
 
 Use this section to include a brief code snippet of functionality that you are proud of and a brief description.  
 
-```
-function reverse(string) {
-	// here is the code to reverse a string of text
-}
-```
+ getAnimeSearch.forEach((anime) => {
+    searchResults.innerHTML += `
+      <div class="card">
+      <div class="card-image">
+          <img src="${anime.images.jpg.image_url}">
+      </div>
+      <div class="card-content">
+          <span class="card-title">${anime.title}</span>
+          <p>${anime.synopsis}</p>
+      </div>
+      <div class="card-action">
+          <a href="${anime.url}">Find out more</a>
+      </div>
+  </div>
+    `
+  })
