@@ -8,7 +8,7 @@ function searchAnime(event) {
   const form = new FormData(this);
   const query = form.get("search");
 
-  fetch(`${url}/search/anime?q=${query}&page=1`)
+  fetch(`${url}?q=${query}&page=1`, /*{ mode: 'cors', headers: { 'Access-Control-Allow-Origin': "*", Origin: "http://127.0.0.1:5500" } }*/)
     .then(res => res.json())
     .then(updateDom)
     .catch(err => console.warn(err.message));
@@ -18,45 +18,28 @@ function updateDom(data) {
 
   const searchResults = document.getElementById('search-results');
 
-  const getAnimeSearch = data.results
-    .reduce((acc, anime) => {
-
-      const { type } = anime;
-      if (acc[type] === undefined) acc[type] = [];
-      acc[type].push(anime);
-      return acc;
-
-    }, {});
-
-  searchResults.innerHTML = Object.keys(getAnimeSearch).map(key => {
-
-    const animesHTML = getAnimeSearch[key]
-      .sort((a, b) => a.episodes - b.episodes)
-      .map(anime => {
-        return `
-                  <div class="card">
-                      <div class="card-image">
-                          <img src="${anime.image_url}">
-                      </div>
-                      <div class="card-content">
-                          <span class="card-title">${anime.title}</span>
-                          <p>${anime.synopsis}</p>
-                      </div>
-                      <div class="card-action">
-                          <a href="${anime.url}">Find out more</a>
-                      </div>
-                  </div>
-              `
-      }).join("");
+  const getAnimeSearch = data.data
 
 
-    return `
-              <section>
-                  <h3>${key.toUpperCase()}</h3>
-                  <div class="Anime-row">${animesHTML}</div>
-              </section>
-          `
-  }).join("");
+
+  getAnimeSearch.forEach((anime) => {
+    searchResults.innerHTML += `
+      <div class="card">
+      <div class="card-image">
+          <img src="${anime.images.jpg.image_url}">
+      </div>
+      <div class="card-content">
+          <span class="card-title">${anime.title}</span>
+          <p>${anime.synopsis}</p>
+      </div>
+      <div class="card-action">
+          <a href="${anime.url}">Find out more</a>
+      </div>
+  </div>
+    `
+  })
+
+
 }
 
 function pageLoaded() {
